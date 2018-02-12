@@ -1,0 +1,24 @@
+sudo: false
+language: rust
+cache: cargo
+rust:
+- stable
+branches:
+  only:
+  - master
+before_script:
+- "(cargo install mdbook --git https://github.com/azerupi/mdBook.git --force || true)"
+script:
+- mdbook build
+- mdbook test
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: "$GH_TOKEN"
+  local_dir: book
+  target_branch: master
+  on:
+    branch: source
+env:
+  global:
+    secure: M1wblmx+2DyS7dZ0yzgkVz6dI84eMOUHGLR8eaJ0xoPH3TU4JFefP65Qv/q7uKID2UoRlFIgY50hsHXuaHbw5pEiSTxGZpqExd0KAG0XEavNHE8GZ8JL59HDceBPREkTBLM71IC5LPc94X/jDAqUXqzEHMwsFtRPMERRpG/i+0fuvuFfAYo9IOcJDtdfoxWsSd/oJwu8qVADlI8X+0EMIO7FTOWzt17By5E685jI/c2cGYtpqsqVNSGwC8pba2E8QlxDmNYFcWkOZxbXx5E6gX7Iep6xPmP8hs8R1MzOzhIEjPdUBY8kIHV4nV+IcYLtpO/ShZOyEdj9mdf4eryNu76MAM8ofZeYx0DFt88j6JxWfvJ2YORUdckzFG8/fI5G6WHOF93aTSlCqP7DeyHPfCPhD+j8uM6YgIDhbNJjHH3mFkghOidwy3nqzYKRhzlxDp1pDGn4R7IvSnmw9zS80EvPpetLSqXsfHa6MmfmAhjAET7WSqfaNGIJos/w9ez5expVVy3ad4WqdikRnU7gimQpQrv6HAWGUjqyD+tEazeRGArx5CdBOHVWH/SFiMrUKxXB78MqERmZYsPj5dekfnEkYNTKw3ezFshnV88r5FF+/ztJzOwb4tGoNd1HRYY2gxTBFotIBCkxxvuZOIbUvWZkygzACFQYrhvt9GTRuU8=

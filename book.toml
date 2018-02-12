@@ -1,0 +1,8 @@
+[book]
+title = "Crate CI"
+description = "Simplifying Crate Management"
+author = "The Rust Community"
+
+[output.html.playpen]
+editable = true
+editor = "ace"
