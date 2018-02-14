@@ -1,7 +1,7 @@
 # Style Enforcement
 
 Pre-requisites:
-- [Testing](testing.md) is setup
+- [Testing](pr/testing.html) is setup
 
 [rustfmt][rustfmt] is the standard tool for automating code formatting.  You
 can run it manually to clean up your code, integrate it into your text editor
