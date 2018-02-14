@@ -1,6 +1,6 @@
 # crate-ci
 
-[![Build Status](https://travis-ci.org/crate-ci/crate-ci.github.io.svg?branch=master)](https://travis-ci.org/crate-ci/crate-ci.github.io)
+[![Build Status](https://travis-ci.org/crate-ci/crate-ci.github.io.svg?branch=source)](https://travis-ci.org/crate-ci/crate-ci.github.io)
 
 Crate CI: Simplifying Crate management
 
