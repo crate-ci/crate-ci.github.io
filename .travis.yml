@@ -4,8 +4,14 @@ cache: cargo
 rust:
 - stable
 
-before_script:
-- "(cargo install mdbook --git https://github.com/azerupi/mdBook.git --force || true)"
+install:
+- curl -LSfs https://japaric.github.io/trust/install.sh |
+  sh -s --
+  --git rust-lang-nursery/mdBook
+  --crate mdbook
+  --force
+  --target x86_64-unknown-linux-gnu
+  --tag v0.1.2
 script:
 - mdbook build
 - mdbook test
