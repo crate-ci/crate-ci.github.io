@@ -4,22 +4,8 @@
 
 Compiler warnings provide some basic checking for code smells.
 
-The seemingly easy answer for checking for warnings is to either:
-
-```bash
-RUSTFLAGS="-D warnings" cargo build
-```
-
-or in each of your `lib.rs`, `main.rs`, and test `.rs` files:
-
-```rust
-#![deny(warnings)]
-```
-
-The reason you don't want to do this in your CI process is that new versions of
-Rust can add and remove warnings, causing the build to break on your
-contributor's PR, frustrating and possibly alienating the,.  So unfortunately,
-the best answer we have is to put the following in each of your `lib.rs`, `main.rs`, and test `.rs` files:
+Unfortunately, our recommendation here is a bit verbose.  We have is to put the
+following in each of your `lib.rs`, `main.rs`, and test `.rs` files:
 
 ```rust,ignore
 #![deny(const_err,
@@ -82,6 +68,24 @@ dev = []
         //...
         while_true))]
 ```
+
+### Why Avoid The Simple Answer
+
+The seemingly easy answer for checking for warnings is to either:
+
+```bash
+RUSTFLAGS="-D warnings" cargo build
+```
+
+or in each of your `lib.rs`, `main.rs`, and test `.rs` files:
+
+```rust
+#![deny(warnings)]
+```
+
+The reason you don't want to do this in your CI process is that new versions of
+Rust can add and remove warnings, causing the build to break on your
+contributor's PR, frustrating and possibly alienating the,.  
 
 ## Lints
 
