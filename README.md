@@ -1,6 +1,7 @@
 # crate-ci
 
 [![Build Status](https://travis-ci.org/crate-ci/crate-ci.github.io.svg?branch=source)](https://travis-ci.org/crate-ci/crate-ci.github.io)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/crate-ci/general)
 
 Crate CI: Simplifying Crate management
 
