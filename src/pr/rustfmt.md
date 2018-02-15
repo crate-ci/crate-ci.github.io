@@ -37,26 +37,17 @@ We'll be adding the following to your `.travis.yml`:
 ```yml
 matrix:
   include:
-  - rust: stable
-    env: RUSTFMT_VERSION=0.8.6
+  - rust: 1.24.0  # Locking down for consistent behavior
+    env: RUSTFMT
     install:
-      - travis_wait cargo install rustfmt --version $RUSTFMT_VERSION || echo "rustfmt already installed"
+    - rustup component add rustfmt-preview
     script:
-      - cargo fmt -- --write-mode=diff
+    - cargo fmt -- --write-mode=diff
 ```
 
 Highlights:
 - `matrix: include:` is allowing us to define a complete one-off build job.
   - This will run in parallel to your tests, giving you quicker feedback.
   - No other job output will be in here, making it easier to see the results.
-- `RUSTFMT_VERSION`: We install a specific instance of `rustfmt`.
+- `rust: 1.24.0`: We run a specific version of Rust to get its version of `rustfmt`
   - Locking down to a specific version is helpful to avoid behavior changes, even if bug fixes, from breaking PRs.
-  - This is showing running a version on `stable` channel.  There are newer versions on `nightly`.
-  - Soon this will be integrated into `rustup` like `cargo` and friends, making this easier.
-- `travis_wait cargo install ...`: Travis caches where `rustfmt` gets installed to.
-  - This makes the builds faster not having to recompile `rustfmt` every time.
-  - On a fresh container, we need `travis_wait` to avoid timeouts in Travis
-  - On a cached container, `cargo install` will quickly error out because `rustfmt` is already install
-  - When changing `RUSTFMT_VERSION` (or any `matrix` `env`), Travis will [invalidate the cache][travis-cache].
-
-[travis-cache]: https://docs.travis-ci.com/user/caching

@@ -80,7 +80,7 @@ This is a good starting `.travis.yml`:
 sudo: false
 language: rust
 rust:
-- 1.21.0  # Two releases back
+- 1.22.0  # Two releases back
 - stable
 - beta
 - nightly
@@ -120,55 +120,55 @@ environment:
     #APPVEYOR_CACHE_SKIP_RESTORE: true  # Uncomment when caching causes problems
 
   matrix:
-    # Two releases back
-    - TARGET: i686-pc-windows-msvc
-      CHANNEL: 1.21.0
-    - TARGET: i686-pc-windows-gnu
-      CHANNEL: 1.21.0
-    - TARGET: x86_64-pc-windows-msvc
-      CHANNEL: 1.21.0
-    - TARGET: x86_64-pc-windows-gnu
-      CHANNEL: 1.21.0
-    # Stable channel
-    - TARGET: i686-pc-windows-msvc
-      CHANNEL: stable
-    - TARGET: i686-pc-windows-gnu
-      CHANNEL: stable
-    - TARGET: x86_64-pc-windows-msvc
-      CHANNEL: stable
-    - TARGET: x86_64-pc-windows-gnu
-      CHANNEL: stable
-    # Beta channel
-    - TARGET: x86_64-pc-windows-msvc
-      CHANNEL: beta
-    - TARGET: x86_64-pc-windows-gnu
-      CHANNEL: beta
-    # Nightly channel
-    - TARGET: x86_64-pc-windows-msvc
-      CHANNEL: nightly
-    - TARGET: x86_64-pc-windows-gnu
-      CHANNEL: nightly
+  # Two releases back
+  - TARGET: i686-pc-windows-msvc
+    CHANNEL: 1.22.0
+  - TARGET: i686-pc-windows-gnu
+    CHANNEL: 1.22.0
+  - TARGET: x86_64-pc-windows-msvc
+    CHANNEL: 1.22.0
+  - TARGET: x86_64-pc-windows-gnu
+    CHANNEL: 1.22.0
+  # Stable channel
+  - TARGET: i686-pc-windows-msvc
+    CHANNEL: stable
+  - TARGET: i686-pc-windows-gnu
+    CHANNEL: stable
+  - TARGET: x86_64-pc-windows-msvc
+    CHANNEL: stable
+  - TARGET: x86_64-pc-windows-gnu
+    CHANNEL: stable
+  # Beta channel
+  - TARGET: x86_64-pc-windows-msvc
+    CHANNEL: beta
+  - TARGET: x86_64-pc-windows-gnu
+    CHANNEL: beta
+  # Nightly channel
+  - TARGET: x86_64-pc-windows-msvc
+    CHANNEL: nightly
+  - TARGET: x86_64-pc-windows-gnu
+    CHANNEL: nightly
 
 install:
-  - ps: >-
-      $Env:PATH += ';C:\msys64\usr\bin'
-  - curl -sSf -o rustup-init.exe https://win.rustup.rs/
-  - rustup-init.exe -y --default-host %TARGET% --default-toolchain %CHANNEL%
-  - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
-  - rustc -Vv
-  - cargo -V
+- ps: >-
+    $Env:PATH += ';C:\msys64\usr\bin'
+- curl -sSf -o rustup-init.exe https://win.rustup.rs/
+- rustup-init.exe -y --default-host %TARGET% --default-toolchain %CHANNEL%
+- set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
+- rustc -Vv
+- cargo -V
 
 test_script:
-  - cargo check --verbose
-  - cargo test --verbose
+- cargo check --verbose
+- cargo test --verbose
 
 cache:
-  - C:\Users\appveyor\.cargo\registry
-  - target
+- C:\Users\appveyor\.cargo\registry
+- target
 
 notifications:
-  - provider: Email
-    on_build_success: false
+- provider: Email
+  on_build_success: false
 
 # Building is done in the test phase, so we disable Appveyor's build phase.
 build: false

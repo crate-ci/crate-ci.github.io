@@ -122,9 +122,9 @@ matrix:
   - rust: nightly-2018-01-12
     env: CLIPPY_VERSION=0.0.179
     install:
-      - travis_wait cargo install clippy --version $CLIPPY_VERSION || echo "clippy already installed"
+    - travis_wait cargo install clippy --version $CLIPPY_VERSION || echo "clippy already installed"
     script:
-      - cargo clippy -- -D clippy
+    - cargo clippy -- -D clippy
 ```
 
 Highlights
