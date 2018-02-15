@@ -55,6 +55,11 @@ You can update this list for new versions of rustc by:
 3. Paste them here, deleting `warnings`, and any with `deprecated` in the name
    since new rustc versions can introduce new deprecations.
 
+See also [example-warn][example-warn].
+
+[example-warn]: https://github.com/crate-ci/example-warn
+
+
 Some people like to add a `dev` feature to their project as a quick way to silence these warnings.
 
 `Cargo.toml`:
@@ -98,7 +103,10 @@ Linters are extra tools for checking for code smells.  They aren't regular warni
 
 [clippy][clippy] is the standard linter for the Rust ecosystem.
 
+See also [example-clippy][example-clippy].
+
 [clippy]: https://github.com/rust-lang-nursery/rust-clippy
+[example-clippy]: https://github.com/crate-ci/example-clippy
 
 ### TravisCI
 

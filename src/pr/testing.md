@@ -57,6 +57,10 @@ Recommendation:
 
 There are several CI hosts that will help you run tests on your CI
 
+See also [example-base][example-base].
+
+[example-base]: https://github.com/crate-ci/example-base
+
 ### TravisCI
 
 Supports:

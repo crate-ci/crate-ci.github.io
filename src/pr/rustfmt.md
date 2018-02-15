@@ -9,6 +9,9 @@ to do it automatically, or have it verify if your code is formatted correctly.
 That last role is what we want to leverage to reduce reduce the burden of
 handling PRs.
 
+See also [example-rustfmt][example-rustfmt].
+
+[example-rustfmt]: https://github.com/crate-ci/example-rustfmt
 [rustfmt]: https://github.com/rust-lang-nursery/rustfmt
 
 ## Specifying Your Style
