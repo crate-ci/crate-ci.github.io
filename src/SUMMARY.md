@@ -5,8 +5,8 @@
 - [Managing PRs](pr.md)
   - [Testing](pr/testing.md)
   - [Style Enforcement](pr/rustfmt.md)
+  - [Code Smells](pr/clippy.md)
   - [Code Coverage](pr/coverage.md)
-  - [Static Analysis](pr/clippy.md)
 
 - [Managing Releases](release.md)
   - [CHANGELOG](release/changelog.md)
