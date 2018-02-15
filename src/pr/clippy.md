@@ -97,7 +97,7 @@ Linters are extra tools for checking for code smells.  They aren't regular warni
 
 [clippy]: https://github.com/rust-lang-nursery/rust-clippy
 
-## TravisCI
+### TravisCI
 
 Like with [rustfmt](pr/rustfmt.html), you only need `clippy` running in on job
 and we recommend running it on Travis rather than Appveyor because Travis
