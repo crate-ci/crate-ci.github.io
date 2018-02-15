@@ -9,7 +9,9 @@ The seemingly easy answer for checking for warnings is to either:
 ```bash
 RUSTFLAGS="-D warnings" cargo build
 ```
+
 or in each of your `lib.rs`, `main.rs`, and test `.rs` files:
+
 ```rust
 #![deny(warnings)]
 ```
@@ -18,8 +20,9 @@ The reason you don't want to do this in your CI process is that new versions of
 Rust can add and remove warnings, causing the build to break on your
 contributor's PR, frustrating and possibly alienating the,.  So unfortunately,
 the best answer we have is to put the following in each of your `lib.rs`, `main.rs`, and test `.rs` files:
-```rust
-#![cfg_attr(deny(const_err,
+
+```rust,ignore
+#![deny(const_err,
         dead_code,
         illegal_floating_point_literal_pattern,
         improper_ctypes,
@@ -66,15 +69,17 @@ You can update this list for new versions of rustc by:
 Some people like to add a `dev` feature to their project as a quick way to silence these warnings.
 
 `Cargo.toml`:
+
 ```toml
 [features]
 dev = []
 ```
 
 `lib.rs` (etc):
-```rust
+
+```rust,ignore
 #![cfg_attr(not(feature="dev"), deny(const_err,
-        ...
+        //...
         while_true))]
 ```
 
@@ -95,6 +100,7 @@ and we recommend running it on Travis rather than Appveyor because Travis
 supports your jobs running in parallel.
 
 We'll be adding the following to your `.travis.yml`:
+
 ```yml
 matrix:
   include:
