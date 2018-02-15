@@ -1,5 +1,8 @@
 # Code Smells
 
+Pre-requisites:
+- [Testing](pr/testing.html) is setup
+
 ## Warnings
 
 Compiler warnings provide some basic checking for code smells.
