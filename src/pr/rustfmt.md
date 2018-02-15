@@ -27,7 +27,7 @@ rustfmt --dump-default-config .rustfmt.toml
 ## TravisCI
 
 Unlike your tests, there is little value in running more than one job to check
-the style. We recommend running it on Travis rather than Appveyor becayse
+the style. We recommend running it on Travis rather than Appveyor because
 Travis supports your jobs running in parallel.
 
 We'll be adding the following to your `.travis.yml`:
@@ -35,10 +35,9 @@ We'll be adding the following to your `.travis.yml`:
 matrix:
   include:
   - rust: stable
-    env: RUSTFMT=0.8.6
+    env: RUSTFMT_VERSION=0.8.6
     install:
-      - if [[ `rustfmt --version` != $RUSTFMT* ]] ; then travis_wait cargo install rustfmt --force --vers $RUSTFMT; fi
-      - export PATH=$HOME/.cargo/bin:$PATH
+      - travis_wait cargo install rustfmt --version $RUSTFMT_VERSION || echo "rustfmt already installed"
     script:
       - cargo fmt -- --write-mode=diff
 ```
@@ -46,11 +45,15 @@ matrix:
 Highlights:
 - `matrix: include:` is allowing us to define a complete one-off build job.
   - This will run in parallel to your tests, giving you quicker feedback.
-  - No one job output will be in here, making it easier to see the results.
-- `RUSTFMT`: We install a specific instance of `rustfmt`.
+  - No other job output will be in here, making it easier to see the results.
+- `RUSTFMT_VERSION`: We install a specific instance of `rustfmt`.
   - Locking down to a specific version is helpful to avoid behavior changes, even if bug fixes, from breaking PRs.
   - This is showing running a version on `stable` channel.  There are newer versions on `nightly`.
   - Soon this will be integrated into `rustup` like `cargo` and friends, making this easier.
-- `if ... fi`: This ensures we only install `rustfmt` if the version in Travis' cache is different than `RUSTFMT`.
+- `travis_wait cargo install ...`: Travis caches where `rustfmt` gets installed to.
   - This makes the builds faster not having to recompile `rustfmt` every time.
-  - `travis_wait` is to avoid timeouts in Travis.
+  - On a fresh container, we need `travis_wait` to avoid timeouts in Travis
+  - On a cached container, `cargo install` will quickly error out because `rustfmt` is already install
+  - When changing `RUSTFMT_VERSION` (or any `matrix` `env`), Travis will [invalidate the cache][travis-cache].
+
+[travis-cache]: https://docs.travis-ci.com/user/caching
