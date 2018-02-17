@@ -29,7 +29,7 @@ read all content offline, however!
 
 Please see the [CONTRIBUTING.md] file for more details.
 
-[CONTRIBUTING.md]: https://github.com/crate-ci/crate-ci.github.io/blob/master/CONTRIBUTING.md
+[CONTRIBUTING.md]: https://github.com/crate-ci/crate-ci.github.io/blob/source/CONTRIBUTING.md
 
 ## License
 
