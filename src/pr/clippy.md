@@ -7,75 +7,37 @@ Pre-requisites:
 
 Compiler warnings provide some basic checking for code smells.
 
-Unfortunately, our recommendation here is a bit verbose.  We have is to put the
-following in each of your `lib.rs`, `main.rs`, and test `.rs` files:
+There are many ways to check for warnings.  We recommend the followig:
+
+In each of your `lib.rs`, `main.rs`, and test `.rs` files:
 
 ```rust,ignore
-#![deny(const_err,
-        dead_code,
-        illegal_floating_point_literal_pattern,
-        improper_ctypes,
-        non_camel_case_types,
-        non_shorthand_field_patterns,
-        non_snake_case,
-        non_upper_case_globals,
-        no_mangle_generic_items,
-        overflowing_literals,
-        path_statements,
-        patterns_in_fns_without_body,
-        plugin_as_library,
-        private_in_public,
-        private_no_mangle_fns,
-        private_no_mangle_statics,
-        renamed_and_removed_lints,
-        stable_features,
-        unconditional_recursion,
-        unions_with_drop_fields,
-        unknown_lints,
-        unreachable_code,
-        unreachable_patterns,
-        unused_allocation,
-        unused_assignments,
-        unused_attributes,
-        unused_comparisons,
-        unused_features,
-        unused_imports,
-        unused_macros,
-        unused_must_use,
-        unused_mut,
-        unused_parens,
-        unused_unsafe,
-        unused_variables,
-        while_true)]
+#![warn(warnings)]
 ```
 
-You can update this list for new versions of rustc by:
-1. Run `rustc -W help`
-2. Grab all `default=warn` warnings
-3. Paste them here, deleting `warnings`, and any with `deprecated` in the name
-   since new rustc versions can introduce new deprecations.
+In `.travis.yml`:
+
+```yml
+matrix:
+  include:
+  - rust: 1.24.0  # `stable`: Locking down for consistent behavior
+    env: RUSTFLAGS=-D warnings
+    install:
+    script:
+    - cargo check --tests
+```
+
+Highlights
+- Doesn't slow people down during prototyping by turning warnings into errors.
+- Contributors see all warnings they will be accountable for due to `warn(warnings)`.
+- Warning changes don't break the CI due to `rust: 1.24.0`
+
+A major downside of this:
+- Only run on one target
 
 See also [example-warn][example-warn].
 
 [example-warn]: https://github.com/crate-ci/example-warn
-
-
-Some people like to add a `dev` feature to their project as a quick way to silence these warnings.
-
-`Cargo.toml`:
-
-```toml
-[features]
-dev = []
-```
-
-`lib.rs` (etc):
-
-```rust,ignore
-#![cfg_attr(not(feature="dev"), deny(const_err,
-        //...
-        while_true))]
-```
 
 ### Why Avoid The Simple Answer
 
