@@ -21,8 +21,7 @@ In `.travis.yml`:
 matrix:
   include:
   - rust: 1.24.0  # `stable`: Locking down for consistent behavior
-    env: RUSTFLAGS=-D warnings
-    install:
+    env: RUSTFLAGS="-D warnings"
     script:
     - cargo check --tests
 ```
