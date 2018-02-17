@@ -37,7 +37,7 @@ We'll be adding the following to your `.travis.yml`:
 ```yml
 matrix:
   include:
-  - rust: 1.24.0  # Locking down for consistent behavior
+  - rust: 1.24.0  # `stable`: Locking down for consistent behavior
     env: RUSTFMT
     install:
     - rustup component add rustfmt-preview
@@ -51,3 +51,4 @@ Highlights:
   - No other job output will be in here, making it easier to see the results.
 - `rust: 1.24.0`: We run a specific version of Rust to get its version of `rustfmt`
   - Locking down to a specific version is helpful to avoid behavior changes, even if bug fixes, from breaking PRs.
+- `env: RUSTFMT`: This is purely here because Travis will put it in the job summary, making it easier to distinguish this job from others
