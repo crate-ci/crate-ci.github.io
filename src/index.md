@@ -12,7 +12,7 @@ crates with minimal overhead.
 
 If you need further help, feel free to reach out to us on [gitter][gitter]
 
-Contributing
+## Contributing
 - Find a mistake or out of date examples? Feel free to file an [issue][issue] or create a [PR][home].
 - Have a way to improve the CI for crates? Feel free to join the [discussion][meta]
 
