@@ -26,7 +26,6 @@ If you make additions or other changes to a pull request, feel free to either am
 previous commits or only add new ones, however you prefer. We may ask you to squash
 your commits before merging, depending.
 
-
 ## Issue Tracker
 
 You can find the issue tracker [on
@@ -37,8 +36,14 @@ We use the following labels:
 
 * `enhancement`: This is for any request for new sections or functionality.
 * `bug`: This is for anything that's in the docs, but incorrect or not working.
-* `discussion`: A discussion about improving something in RBE; this may lead to new
+* `question`: A discussion about how we should document a best practice. This may lead to new
   enhancement or bug issues.
+
+Note that this is focused on issues in documenting best practices.  For
+discussing what the best practices should be, instead see the [meta]
+discussion.
+
+[meta]: https://github.com/crate-ci/meta
 
 ## Development workflow
 
