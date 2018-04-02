@@ -14,7 +14,7 @@ Pre-requisites:
 - The previous release is the most recent tag.
 
 Steps
-1. Install clog: `cargo install clig-cli`
+1. Install clog: `cargo install clog-cli`
 2. Run `clog --setversion <X>.<Y>.<Z>`
 3. Massage the output as needed.
 
