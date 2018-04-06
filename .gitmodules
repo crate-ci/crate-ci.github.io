@@ -1,0 +1,15 @@
+[submodule "examples/example-rustfmt"]
+	path = examples/example-rustfmt
+	url = https://github.com/crate-ci/example-rustfmt.git
+[submodule "examples/example-warn"]
+	path = examples/example-warn
+	url = https://github.com/crate-ci/example-warn.git
+[submodule "examples/example-bin"]
+	path = examples/example-bin
+	url = https://github.com/crate-ci/example-bin
+[submodule "examples/example-base"]
+	path = examples/example-base
+	url = https://github.com/crate-ci/example-base.git
+[submodule "examples/example-clippy"]
+	path = examples/example-clippy
+	url = https://github.com/crate-ci/example-clippy.git
