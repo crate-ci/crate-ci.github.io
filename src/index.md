@@ -10,6 +10,8 @@ crates with minimal overhead.
 
 - [Managing Releases](release.html)
 
+- [Wrangling Dependencies](dependencies.html)
+
 If you need further help, feel free to reach out to us on [gitter][gitter]
 
 ## Contributing

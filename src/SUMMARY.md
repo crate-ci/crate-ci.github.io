@@ -13,3 +13,6 @@
   - [Publishing Crates](release/publish.md)
   - [Prebuilt Binaries](release/binaries.md)
   - [API Documentation](release/docs.md)
+
+- [Wrangling Dependencies](dependencies.md)
+  - [Keeping Up on Dependencies](dependencies/updates.md)
