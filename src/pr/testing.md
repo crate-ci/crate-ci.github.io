@@ -100,11 +100,15 @@ cache:
 Highlights
 - `sudo: false`: Allows Travis to do some optimizations
 - `install`: print tool versions for traceability
-- `cargo check`: Faster turn around time on results but `cargo test` can't
-  reuse the results.  Useful for when doing test builds of different feature
-  combinations
+- `cargo check`: Only needed if your project has a `[[bin]]`.  Ensure that that
+  builds tyoo. `check` delivers faster turnaround than doing `cargo build`
+  since we don't care about the build artifact.
+- `cargo test`: If your crate has [features][cargo-features], considering at
+  least re-running the tests with `--no-default-features` and `--all-features`,
+  as appropriate.
 - `cache:`: [Cache the cargo registry and build][travis-cache]
 
+[cargo-features]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-features-section
 [travis-cache]: https://docs.travis-ci.com/user/caching/#Rust-Cargo-cache
 
 ### Appveyor
