@@ -76,7 +76,7 @@ So as a healthy medium, we recommend:
 Notes:
 - If the service offers it (like Travis), you probably want it set to "Do not
   run if there has been a build in the last 24 hours" rather than "Always run".
-- Appveyor has put [extra restructions on scheuled builds][appveyor-cron].
+- Appveyor has put [extra restrictions on scheuled builds][appveyor-cron].
 
 [cargo-lock]: https://doc.rust-lang.org/cargo/guide/cargo-toml-vs-cargo-lock.html
 [appveyor-cron]: https://www.appveyor.com/blog/2017/11/08/sheduled-builds-for-free-accounts/
