@@ -129,7 +129,7 @@ Highlights
 - `sudo: false`: Allows Travis to do some optimizations
 - `install`: print tool versions for traceability
 - `cargo check`: Only needed if your project has a `[[bin]]`.  Ensure that that
-  builds tyoo. `check` delivers faster turnaround than doing `cargo build`
+  builds type. `check` delivers faster turnaround than doing `cargo build`
   since we don't care about the build artifact.
 - `cargo test`: If your crate has [features][cargo-features], considering at
   least re-running the tests with `--no-default-features` and `--all-features`,

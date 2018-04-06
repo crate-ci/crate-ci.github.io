@@ -54,7 +54,7 @@ or in each of your `lib.rs`, `main.rs`, and test `.rs` files:
 
 The reason you don't want to do this in your CI process is that new versions of
 Rust can add and remove warnings, causing the build to break on your
-contributor's PR, frustrating and possibly alienating the,.  
+contributor's PR, frustrating and possibly alienating them.
 
 ## Lints
 

@@ -10,7 +10,7 @@ recording breaking changes and how people can migrate between versions.
 Pre-requisites:
 - Commits in [conventional style][commit-style].
   - [gitcop][gitcop] is a bot to enforce a specific commit style.
-- Releases are tagged.,
+- Releases are tagged.
 - The previous release is the most recent tag.
 
 Steps
