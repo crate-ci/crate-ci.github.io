@@ -53,6 +53,34 @@ Recommendation:
 - Test all platforms on "2 releases back" and `stable`
 - Test the minimum platforms on `beta` and `nightly`
 
+### CI Triggers
+
+Travis and related CIs by default trigger builds on
+- Commits to branches in the repo
+- PRs
+- Tags
+
+Additionally, you can schedule builds to happen periodically.  This can be
+useful to catch problems from new versions of Rust or your dependencies (if you
+don't commit your [lock file][cargo-lock]). It can be discouraging to a
+contributor if the build fails on their PR for reasons unrelated to their
+change.
+
+In contrast, we want to be respectful of the CI services we are getting for
+free and don't want to put unnecessary load on them.
+
+So as a healthy medium, we recommend:
+- If you use nightly-only features: build frequently (~1 / week)
+- All else: build monthly (`0 0 1 * *` in cron syntax)
+
+Notes:
+- If the service offers it (like Travis), you probably want it set to "Do not
+  run if there has been a build in the last 24 hours" rather than "Always run".
+- Appveyor has put [extra restructions on scheuled builds][appveyor-cron].
+
+[cargo-lock]: https://doc.rust-lang.org/cargo/guide/cargo-toml-vs-cargo-lock.html
+[appveyor-cron]: https://www.appveyor.com/blog/2017/11/08/sheduled-builds-for-free-accounts/
+
 ## Running Tests on PRs
 
 There are several CI hosts that will help you run tests on your CI
