@@ -80,7 +80,7 @@ This is a good starting `.travis.yml`:
 sudo: false
 language: rust
 rust:
-- 1.22.0  # Two releases back
+- 1.22.0  # Oldest supported
 - stable
 - beta
 - nightly
@@ -120,11 +120,7 @@ environment:
     #APPVEYOR_CACHE_SKIP_RESTORE: true  # Uncomment when caching causes problems
 
   matrix:
-  # Two releases back
-  - TARGET: i686-pc-windows-msvc
-    CHANNEL: 1.22.0
-  - TARGET: i686-pc-windows-gnu
-    CHANNEL: 1.22.0
+  # Oldest supported
   - TARGET: x86_64-pc-windows-msvc
     CHANNEL: 1.22.0
   - TARGET: x86_64-pc-windows-gnu

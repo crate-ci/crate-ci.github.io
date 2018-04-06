@@ -20,8 +20,8 @@ In `.travis.yml`:
 ```yml
 matrix:
   include:
-  - rust: 1.24.0  # `stable`: Locking down for consistent behavior
-    env: RUSTFLAGS="-D warnings"
+  - env: RUSTFLAGS="-D warnings"
+    rust: 1.24.0  # `stable`: Locking down for consistent behavior
     script:
     - cargo check --tests
 ```
@@ -80,8 +80,8 @@ We'll be adding the following to your `.travis.yml`:
 ```yml
 matrix:
   include:
-  - rust: nightly-2018-01-12
-    env: CLIPPY_VERSION=0.0.179
+  - env: CLIPPY_VERSION=0.0.179
+    rust: nightly-2018-01-12
     install:
     - travis_wait cargo install clippy --version $CLIPPY_VERSION || echo "clippy already installed"
     script:

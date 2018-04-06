@@ -37,8 +37,8 @@ We'll be adding the following to your `.travis.yml`:
 ```yml
 matrix:
   include:
-  - rust: 1.24.0  # `stable`: Locking down for consistent behavior
-    env: RUSTFMT
+  - env: RUSTFMT
+    rust: 1.24.0  # `stable`: Locking down for consistent behavior
     install:
     - rustup component add rustfmt-preview
     script:
