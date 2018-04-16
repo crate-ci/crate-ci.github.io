@@ -71,7 +71,7 @@ See also [example-clippy][example-clippy].
 
 ### TravisCI
 
-Like with [rustfmt](pr/rustfmt.html), you only need `clippy` running in on job
+Like with [rustfmt](pr/rustfmt.html), you only need `clippy` running in one job
 and we recommend running it on Travis rather than Appveyor because Travis
 supports your jobs running in parallel.
 
