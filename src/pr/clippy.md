@@ -80,24 +80,18 @@ We'll be adding the following to your `.travis.yml`:
 ```yml
 matrix:
   include:
-  - env: CLIPPY_VERSION=0.0.179
-    rust: nightly-2018-01-12
+  - env: CLIPPY
+    rust: nightly-2018-07-17
     install:
-    - travis_wait cargo install clippy --version $CLIPPY_VERSION || echo "clippy already installed"
+      - rustup component add clippy-preview
     script:
-    - cargo clippy -- -D clippy
+      - cargo clippy --all-features -- -D clippy
 ```
 
 Highlights
 - `matrix: include:` is allowing us to define a complete one-off build job.
   - This will run in parallel to your tests, giving you quicker feedback.
   - No other job output will be in here, making it easier to see the results.
-- `rust: nightly-2018-01-12` and `CLIPPY_VERSION`:
-  - These need to be kept in lock step with each other.
-  - Travis caches where `clippy` gets installed to.
-    - This makes the builds faster not having to recompile `clippy` every time.
-    - On a fresh container, we need `travis_wait` to avoid timeouts in Travis
-    - On a cached container, `cargo install` will quickly error out because `clippy` is already install
-    - When changing `CLIPPY_VERSION` (or any `matrix` `env`), Travis will [invalidate the cache][travis-cache].
+- Clippy changes don't break the CI due to pinning the nightly version
 
 [travis-cache]: https://docs.travis-ci.com/user/caching
