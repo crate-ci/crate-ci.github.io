@@ -94,6 +94,7 @@ See also [example-base][example-base].
 Supports:
 - Linux
 - Mac
+- [Windows](https://blog.travis-ci.com/2018-10-11-windows-early-release)
 
 Steps:
 1. [Sign up for TravisCI](https://travis-ci.org/)
@@ -113,6 +114,11 @@ rust:
 - beta
 - nightly
 
+os:
+- linux
+- osx
+- windows
+
 install:
 - rustc -Vv
 - cargo -V
@@ -127,6 +133,7 @@ cache:
 
 Highlights
 - `sudo: false`: Allows Travis to do some optimizations
+- `os`: Applies all tests to listed operating systems
 - `install`: print tool versions for traceability
 - `cargo check`: Only needed if your project has a `[[bin]]`.  Ensure that that
   builds type. `check` delivers faster turnaround than doing `cargo build`
