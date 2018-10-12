@@ -119,6 +119,9 @@ os:
 - osx
 - windows
 
+install:
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install windows-sdk-10.0; fi # windows workaround (for now)
+
 script:
 - cargo check --verbose
 - cargo test --verbose
@@ -130,6 +133,9 @@ cache:
 Highlights
 - `sudo: false`: Allows Travis to do some optimizations
 - `os`: Applies all tests to listed operating systems
+- `install`: Windows workaround to allow rust to run properly.  Remove if you
+  are not testing on Windows.  Hopefully temporary as Travis CI _just_ started
+  Windows support as of 2018-10-11.
 - `cargo check`: Only needed if your project has a `[[bin]]`.  Ensure that that
   builds type. `check` delivers faster turnaround than doing `cargo build`
   since we don't care about the build artifact.
