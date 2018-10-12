@@ -119,10 +119,6 @@ os:
 - osx
 - windows
 
-install:
-- rustc -Vv
-- cargo -V
-
 script:
 - cargo check --verbose
 - cargo test --verbose
@@ -134,7 +130,6 @@ cache:
 Highlights
 - `sudo: false`: Allows Travis to do some optimizations
 - `os`: Applies all tests to listed operating systems
-- `install`: print tool versions for traceability
 - `cargo check`: Only needed if your project has a `[[bin]]`.  Ensure that that
   builds type. `check` delivers faster turnaround than doing `cargo build`
   since we don't care about the build artifact.
